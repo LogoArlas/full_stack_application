@@ -1,0 +1,58 @@
+header {
+    font-family: 'Comic Sans MS', cursive, 'Lucida Console' , Monaco, monospace;
+    font-size: smaller;
+    font-weight: bold;
+    background-color: #1C7BC4;
+}
+
+nav {
+    display: flex;
+    align-content: center;
+    display: block;
+    padding: 1em;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
+    font-size: smaller;
+    font-weight: normal;
+    background-color:#1C7BC4;
+}
+
+#registration-form, #login-form {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 10% solid rgb(126, 121, 121);
+    border-radius: 10%;
+    margin: auto;
+    text-align: center;
+}
+
+#registration-form, label, #login-form, label {
+
+    display: block;
+}
+
+.registration-button, .login-button {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    margin: 10px;
+}
+
+.registration-container {
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    ;
+
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
