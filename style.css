@@ -21,7 +21,7 @@ footer {
     background-color:#1C7BC4;
 }
 
-#registration-form, #login-form {
+#registration_form, #login_form, #note_form {
     display: flex;
     justify-content: center;
     align-content: center;
@@ -31,19 +31,19 @@ footer {
     text-align: center;
 }
 
-#registration-form, label, #login-form, label {
+#registration_form, label, #login_form, label, #note_form, label {
 
     display: block;
 }
 
-.registration-button, .login-button {
+.registration_button, .login_button, .add_text_button {
     display:flex;
     justify-content: center;
     align-content: center;
     margin: 10px;
 }
 
-.registration-container {
+.registration_container {
     display: flex;
     justify-content:center;
     align-content:center;
@@ -51,7 +51,7 @@ footer {
 
 }
 
-h1 {
+h1, h4 {
     display: flex;
     justify-content: center;
 }
