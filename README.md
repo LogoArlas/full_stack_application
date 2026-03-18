@@ -25,3 +25,4 @@ Add and delete notes.
 
 ### Relation Diagram
 ![Image of Relations in 1NF.](./images/Relation_Diagram.jpg)
+The diagram above illustrates the one-to-many relationship between tables User and Note in 1FN. The relation uses userId as the primary key in User and userId as the foreign key in Note.  
