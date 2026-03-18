@@ -20,5 +20,5 @@ How to use the application:
 Key features and functions:
     Add notes.
 
-Enity Relationship Diagram:
-![Images of Enity Relationship Diagram] (Entity_Relationship_Diagram.jpg)
+Entity Relationship Diagram:
+![Images of Entity Relationship Diagram](./images/Entity_Relationship_Diagram.jpg)
