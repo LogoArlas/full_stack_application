@@ -1,7 +1,7 @@
 # Note Application
 
-### Project idea
-A note taking application
+### Project Idea
+Create a note taking application.
 
 ### Description
 A note taking application designed for users to type and store information.
