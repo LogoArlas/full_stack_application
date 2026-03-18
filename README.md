@@ -21,8 +21,11 @@ Logout of application using the navigation bar at the top of the screen.
 Add and delete notes.
 
 ### Entity Relationship Diagram
+A graphical representation of the database structure.
 ![Images of Entity Relationship Diagram](./images/Entity_Relationship_Diagram.jpg)
+The User entity has a minimum and maximum cardinality of 1. The Note entity has a minimum cardinality of 0 and a maximum cardinality of many.
 
 ### Relation Diagram
+A graphical representation of the relation between entities User and Note.
 ![Image of Relations in 1NF.](./images/Relation_Diagram.jpg)
-The diagram above illustrates the one-to-many relationship between tables User and Note in 1FN. The relation uses userId as the primary key in User and userId as the foreign key in Note.  
+The diagram above illustrates the one-to-many relationship between entities User and Note in 1FN. The relation uses userId as the primary key in User and userId as the foreign key in Note.  
