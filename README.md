@@ -22,3 +22,6 @@ Add and delete notes.
 
 ### Entity Relationship Diagram
 ![Images of Entity Relationship Diagram](./images/Entity_Relationship_Diagram.jpg)
+
+### Relation Diagram
+![Image of Relations in 1NF.](./images/Relation_Diagram.jpg)
