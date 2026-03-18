@@ -1,4 +1,4 @@
-# full_stack_application
+# Note Application
 
 Project idea: note taking application
 
