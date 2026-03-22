@@ -27,6 +27,6 @@ The User entity has a minimum and maximum cardinality of 1. The Note entity has 
 
 ### Relation Diagram
 A graphical representation of the relation between entities User and Note.
-![Image of Relations in 1NF.](./images/Relation_Diagram.jpg)
+![Image of Relations in 3NF.](./images/Relation_Diagram.jpg)
 
-The diagram above illustrates the one-to-many relationship between entities User and Note in 1FN. The relation uses userId as the primary key in User and userId as the foreign key in Note.  
+The diagram above illustrates the one-to-many relationship between entities User and Note in 3FN. The relation uses userId as the primary key in User and userId as the foreign key in Note.  
