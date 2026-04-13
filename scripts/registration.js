@@ -8,6 +8,9 @@ function register(e) {
     let uName = getElementById("uname").value
     let passwd = getElementById("passwd").value
 
+    //check if username is unique
+    //check if password is at least 8 characters
+
     //Use the constructor to declare a new object.
     //This creates a new user.
     const user = new User(fName, lName, uName, passwd)
