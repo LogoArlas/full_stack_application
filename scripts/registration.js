@@ -3,5 +3,14 @@ if(registrationForm) registrationForm.addEventListener('submit', register)
 
 function register(e) {
     e.preventDefault()
-    
+    let fName = getElementById("fname").value
+    let lName = getElementById("lname").value
+    let uName = getElementById("uname").value
+    let passwd = getElementById("passwd").value
+
+    //Use the constructor to declare a new object.
+    //This creates a new user.
+    const user = new User(fName, lName, uName, passwd)
+    console.log(user)
+
 }
