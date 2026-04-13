@@ -5,7 +5,7 @@ let loginForm = document.getElementById("login_form")
 //make sure loginForm exists
 
 //add event listener
-loginForm.addEventListener('submit', login)
+if(loginForm) loginForm.addEventListener('submit', login)
 //take in data from the form and create a new object
 function login(e) {
     e.preventDefault()
