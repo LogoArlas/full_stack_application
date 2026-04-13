@@ -13,7 +13,8 @@ function login(e) {
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
     if(checkPassword(password)) {
-        const user = {
+        //create new object
+        const user = {     
             username: username,
             password: password
         }
