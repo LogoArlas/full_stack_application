@@ -12,7 +12,15 @@ function login(e) {
 
     let username = document.getElementById("username").value
     let password = document.getElementById("password").value
-    
+    if(checkPassword(password)) {
+        const user = {
+            username: username,
+            password: password
+        }
+        console.log(user)
+    } else {
+        console.log("Invaild Password.")
+    }
 }
 function checkPassword(password) {
     return true
