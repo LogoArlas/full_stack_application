@@ -6,4 +6,5 @@ function note(e) {
     let noteContent = document.getElementById("note")
 
     const note = new Note(noteContent)
+    console.log(note)
 }
