@@ -11,6 +11,6 @@ app.use("/users", userRoutes)
 app.use(express.json())
 
 //set the port the server will run on
-const PORT = process.env.PORT ||
+const PG_PORT = process.env.PG_PORT || PORT_NUMBER
 //start server and listen for incoming requests
-app.listen(PORT, ()=> console.log(`Server started on port ${PORT}!!`))
+app.listen(PG_PORT, ()=> console.log(`Server started on port ${PG_PORT}!!`))
