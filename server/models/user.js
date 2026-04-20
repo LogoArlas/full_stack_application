@@ -13,3 +13,14 @@ await con.query(postgresql)
 }
 //call createTable() function
 createTable()
+
+//create function to get all users
+async function getAllUsers() {
+    let postgresql = `
+    SELECT * FROM User
+    `
+    return await con.query(postgresql)
+}
+
+//export getAllUsers() function
+module.exports = {getAllUsers}
