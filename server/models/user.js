@@ -1,5 +1,5 @@
 //import con to access database
-const con = require("./db_connect")
+const pool = require("./db_connect")
 
 //create table in a function
 async function createTable() {
@@ -9,7 +9,7 @@ async function createTable() {
     password VARCHAR(250) NOT NULL)`
 
 //execute the query with con.query
-await con.query(postgresql)
+await pool.query(postgresql)
 }
 //call createTable() function
 createTable()
@@ -19,7 +19,7 @@ async function getAllUsers() {
     let postgresql = `
     SELECT * FROM User
     `
-    return await con.query(postgresql)
+    return await pool.query(postgresql)
 }
 
 //export getAllUsers() function

@@ -1,4 +1,4 @@
-const con = require("./db_connect")
+const pool = require("./db_connect")
 
 async function createTable() {
     let postgresql = `CREATE TABLE IF NOT EXISTS Note(
@@ -7,7 +7,7 @@ async function createTable() {
     CONSTRAINT userFK FOREIGN KEY(userId)
     REFERENCES User(userId)
     )`
-    await con.query(postgresql)
+    await pool.query(postgresql)
 }
 
 createTable()
@@ -17,7 +17,7 @@ async function getAllNotes() {
     let postgresql = `
     SELECT * FROM Note
     `
-    await con.query(postgresql)
+    await pool.query(postgresql)
 }
 
 module.exports = {getAllNotes}
