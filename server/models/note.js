@@ -11,3 +11,13 @@ async function createTable() {
 }
 
 createTable()
+
+//create a function to get all notes
+async function getAllNotes() {
+    let postgresql = `
+    SELECT * FROM Note
+    `
+    await con.query(postgresql)
+}
+
+module.exports = {getAllNotes}
