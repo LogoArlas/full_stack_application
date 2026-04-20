@@ -4,6 +4,10 @@ const express = require("express")
 //create instance of an Express application
 const app = express()
 
+//define a route path for routes related to the User entity
+const userRoutes = require("./server/routes/user")
+app.use("/users", userRoutes)
+
 app.use(express.json())
 
 //set the port the server will run on
