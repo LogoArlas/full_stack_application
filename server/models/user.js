@@ -44,7 +44,7 @@ async function createUserTable(username, password) {
 
 
 // Example usage:
-//createUser('hello', '1234');
+//createUserTable('hello', '1234');
 
 // Get all users
 async function getAllUsers() {
