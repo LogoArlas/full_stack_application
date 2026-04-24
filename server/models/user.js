@@ -50,7 +50,7 @@ async function createUserTable(username, password) {
 async function getAllUsers() {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM users');
+    const result = await client.query('SELECT * FROM User');
     console.log('All users:', result.rows);
     client.release();
     return result.rows;
@@ -64,7 +64,7 @@ async function getAllUsers() {
 async function getUserById(id) {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM users WHERE id = $1', [id]);
+    const result = await client.query('SELECT * FROM User WHERE id = $1', [id]);
     if (result.rows.length > 0) {
       console.log('User found:', result.rows[0]);
       client.release();
