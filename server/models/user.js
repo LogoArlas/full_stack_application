@@ -42,5 +42,44 @@ async function createUserTable(username, password) {
   }
 }
 
+
 // Example usage:
 //createUser('Jane Smith', 'jane.smith@example.com');
+
+// Get all users
+async function getAllUsers() {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM users');
+    console.log('All users:', result.rows);
+    client.release();
+    return result.rows;
+  } catch (err) {
+    console.error('Error getting users:', err);
+    return [];
+  }
+}
+
+// Get a user by ID
+async function getUserById(id) {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM users WHERE id = $1', [id]);
+    if (result.rows.length > 0) {
+      console.log('User found:', result.rows[0]);
+      client.release();
+      return result.rows[0];
+    } else {
+      console.log('User not found');
+      client.release();
+      return null;
+    }
+  } catch (err) {
+    console.error('Error getting user:', err);
+    return null;
+  }
+}
+
+// Example usage:
+//getAllUsers();
+//getUserById(1);
