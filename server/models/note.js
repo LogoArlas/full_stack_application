@@ -38,3 +38,17 @@ async function createNoteTable(text) {
     return null;
   }
 }
+
+// Get all users
+async function getAllNotes() {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM Note');
+    console.log('All notes:', result.rows);
+    client.release();
+    return result.rows;
+  } catch (err) {
+    console.error('Error getting notes:', err);
+    return [];
+  }
+}
