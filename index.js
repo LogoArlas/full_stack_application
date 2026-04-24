@@ -25,6 +25,8 @@ const db = require("./server/models/db_connect");
 
 const app = express();
 
+app.use(express.json())
+
 app.get('/', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM users');
@@ -67,7 +69,7 @@ main();
 const userRoutes = require("./server/routes/user")
 app.use("/users", userRoutes)
 
-app.use(express.json())
+//app.use(express.json())
 
 //define a route path for routes related to the Note entity
 const noteRoutes = require("./server/routes/note")
