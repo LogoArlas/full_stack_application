@@ -52,3 +52,23 @@ async function getAllNotes() {
     return [];
   }
 }
+
+// Get a user by ID
+async function getNoteById(id) {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM Note WHERE id = $1', [id]);
+    if (result.rows.length > 0) {
+      console.log('Note found:', result.rows[0]);
+      client.release();
+      return result.rows[0];
+    } else {
+      console.log('Note not found');
+      client.release();
+      return null;
+    }
+  } catch (err) {
+    console.error('Error getting Note:', err);
+    return null;
+  }
+}
