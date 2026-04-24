@@ -50,13 +50,10 @@ main();
 const userRoutes = require("./server/routes/user")
 app.use("/users", userRoutes)
 
-//app.use(express.json())
-
 //define a route path for routes related to the Note entity
 const noteRoutes = require("./server/routes/note")
 app.use("/notes", noteRoutes)
 
-//app.use(express.json())
 
 //import Express
 //const express = require("express")
