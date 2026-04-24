@@ -1,26 +1,26 @@
-//import con to access database
+//import pool to access database
 const pool = require("./db_connect")
 
-//create table in a function
-async function createTable() {
-    let postgresql = `CREATE TABLE IF NOT EXISTS User(
+/*//create function to create table 
+async function createUserTable() {
+    let sql = `CREATE TABLE IF NOT EXISTS User(
     userId SERIAL PRIMARY KEY,
     username VARCHAR(250) UNIQUE NOT NULL,
     password VARCHAR(250) NOT NULL)`
 
-//execute the query with con.query
-await pool.query(postgresql)
+//execute the query with pool.query
+await pool.query(sql)
 }
 //call createTable() function
-createTable()
+createUserTable()
 
 //create function to get all users
 async function getAllUsers() {
-    let postgresql = `
-    SELECT * FROM User
+    let sql = `
+    SELECT * FROM User;
     `
-    return await pool.query(postgresql)
+    return await pool.query(sql)
 }
 
 //export getAllUsers() function
-module.exports = {getAllUsers}
+module.exports = {getAllUsers}*/

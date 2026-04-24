@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/getAllUsers", (req, res) => {
     try{
-        const users = User.getUsers()
+        const users = User.getAllUsers()
         res.send(users)
     } catch (err) {
         res.status(401).send({message: error.message})
