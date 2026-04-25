@@ -61,12 +61,12 @@ img {
     width: 9%;
 }
 
-#registration_form, input, #login_form, input {
+#registration_form input, #login_form input {
     border-radius: 10px;
     border: 2px solid rgba(141, 136, 136, 0.589);
     margin: 2% 0;
     padding: 4px;
-    width: 35%;
+    width: auto;
 
 }
 
