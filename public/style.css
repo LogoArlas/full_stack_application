@@ -43,7 +43,7 @@ footer {
     margin: 10px;
 }
 
-.registration_container {
+.registration_container, .login_container {
     display: flex;
     justify-content:center;
     align-content:center;
@@ -63,7 +63,7 @@ img {
     width: 5%;
 }
 
-#registration_form input, #login_form input {
+#registration_form input, #login_form input, #note_form input {
     border-radius: 10px;
     border: 2px solid rgba(141, 136, 136, 0.589);
     margin: 2% 0;
@@ -79,15 +79,6 @@ img {
 
 input[type="submit"] {
     font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
-
-}
-
-.login_container {
-    display: flex;
-    justify-content:center;
-    align-content:center;
-    border: 2px solid rgba(141, 136, 136, .589);
-    border-radius: 10px;
 
 }
 
