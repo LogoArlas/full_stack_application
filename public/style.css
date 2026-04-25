@@ -47,6 +47,7 @@ footer {
     display: flex;
     justify-content:center;
     align-content:center;
+    border: 2px solid rgba(141, 136, 136, .589);
 
 }
 
@@ -84,5 +85,10 @@ img {
     display: flex;
     justify-content:center;
     align-content:center;
+    border: 2px solid rgba(141, 136, 136, .589);
 
+}
+
+main {
+    margin: 5% 35% 25%;
 }
