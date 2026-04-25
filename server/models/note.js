@@ -1,6 +1,6 @@
 const pool = require("./db_connect")
 
-// Create a new user
+// Create a new Note
 async function createNoteTable(text) {
   try {
     const client = await pool.connect();
@@ -31,7 +31,7 @@ async function getAllNotes() {
   }
 }
 
-// Get a note by ID
+// Get a note by Id
 async function getNoteById(id) {
   try {
     const client = await pool.connect();
