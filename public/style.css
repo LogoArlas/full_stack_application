@@ -48,6 +48,7 @@ footer {
     justify-content:center;
     align-content:center;
     border: 2px solid rgba(141, 136, 136, .589);
+    border-radius: 10px;
 
 }
 
@@ -86,6 +87,7 @@ img {
     justify-content:center;
     align-content:center;
     border: 2px solid rgba(141, 136, 136, .589);
+    border-radius: 10px;
 
 }
 
