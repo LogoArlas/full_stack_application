@@ -31,7 +31,7 @@ footer {
     text-align: center;
 }
 
-#registration_form, label, #login_form, label, #note_form, label {
+#registration_form, #login_form, #note_form, label {
 
     display: block;
 }
