@@ -70,7 +70,7 @@ img {
 
 }
 
-#registration_form, input:hover, #login_form, input:hover {
+#registration_form input:hover, #login_form input:hover {
     box-shadow: 2px 2px 5px rgba(0, 0, 0, .20);
 
 }
