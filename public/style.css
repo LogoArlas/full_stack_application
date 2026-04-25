@@ -94,3 +94,7 @@ img {
 main {
     margin: 5% 35% 25%;
 }
+
+nav li {
+    list-style: none;
+}
