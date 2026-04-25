@@ -8,7 +8,8 @@ const app = express();
 
 app.use(express.json())
 
-app.get('/', async (req, res) => {
+//execute query for GET request
+/*app.get('/', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM User');
     res.json(result.rows);
@@ -16,7 +17,7 @@ app.get('/', async (req, res) => {
     console.error(err);
     res.status(500).send('Internal Server Error');
   }
-});
+});*/
 
 //set the port the server will run on
 const PG_PORT = process.env.PG_PORT || PORT_NUMBER
