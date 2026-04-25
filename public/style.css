@@ -1,5 +1,5 @@
 header {
-    font-family: 'Comic Sans MS', cursive, 'Lucida Console' , Monaco, monospace;
+    font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
     font-size: smaller;
     font-weight: bold;
     background-color: #1C7BC4;
@@ -47,7 +47,6 @@ footer {
     display: flex;
     justify-content:center;
     align-content:center;
-    
 
 }
 
@@ -62,3 +61,21 @@ img {
     width: 9%;
 }
 
+#registration_form, input, #login_form, input {
+    border-radius: 10px;
+    border: 4px solid black;
+    margin: 2% 0;
+    padding: 4px;
+    width: auto;
+
+}
+
+#registration_form, input:hover, #login_form, input:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .20);
+
+}
+
+#registration_form, input[type="submit"] {
+    font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
+
+}
