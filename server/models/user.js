@@ -2,7 +2,7 @@
 const pool = require("./db_connect")
 
 // Create a new user
-async function createUserTable(username, password) {
+/*async function createUserTable(username, password) {
   try {
     const client = await pool.connect();
     const result = await client.query(
@@ -16,11 +16,34 @@ async function createUserTable(username, password) {
     console.error('Error creating user:', err);
     return null;
   }
+}*/
+
+async function createUserTable() {
+  try {
+    const client = await pool.connect();
+    const result = await client.query(
+      `CREATE TABLE IF NOT EXISTS User(
+      userId SERIAL PRIMARY KEY,
+      username VARCHAR(250) UNIQUE NOT NULL,
+      password VARCHAR(250) NOT NULL)`
+    );
+    console.log('User created:', result.rows[0]);
+    client.release();
+    return result.rows[0];
+  } catch (err) {
+    console.error('Error creating user:', err);
+    return null;
+  }
+
+//execute the query with pool.query
+await pool.query(result)
 }
+//call createTable() function
+createUserTable()
 
 
-// Example usage:
-//createUserTable('hello', '1234');
+// call createUserTable function:
+createUserTable();
 
 // Get all users
 async function getAllUsers() {
