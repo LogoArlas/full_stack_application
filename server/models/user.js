@@ -17,7 +17,7 @@ const pool = require("./db_connect")
     return null;
   }
 }*/
-
+//create a table for User entity
 async function createUserTable() {
   try {
     const client = await pool.connect();
@@ -109,3 +109,20 @@ async function getAllUsers() {
 
 //export getAllUsers() function
 module.exports = {getAllUsers}*/
+
+// Create a new user
+/*async function createUserTable(username, password) {
+  try {
+    const client = await pool.connect();
+    const result = await client.query(
+      'INSERT INTO User (username, password) VALUES ($1, $2) RETURNING *',
+      [username, password]
+    );
+    console.log('User created:', result.rows[0]);
+    client.release();
+    return result.rows[0];
+  } catch (err) {
+    console.error('Error creating user:', err);
+    return null;
+  }
+}*/
