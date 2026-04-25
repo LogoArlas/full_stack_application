@@ -56,6 +56,9 @@ async function getUserById(id) {
   }
 }
 
+//export functions
+module.exports = {getAllUsers, getUserById}
+
 // Example usage:
 //getAllUsers();
 //getUserById(1);
