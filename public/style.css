@@ -79,3 +79,10 @@ img {
     font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
 
 }
+
+.login_container {
+    display: flex;
+    justify-content:center;
+    align-content:center;
+
+}
