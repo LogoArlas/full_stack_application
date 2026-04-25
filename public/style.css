@@ -77,7 +77,7 @@ img {
 
 }
 
-#registration_form input[type="submit"] {
+input[type="submit"] {
     font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
 
 }
