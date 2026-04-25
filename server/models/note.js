@@ -17,7 +17,7 @@ async function createNoteTable(text) {
   }
 }
 
-// Get all users
+// Get all notes
 async function getAllNotes() {
   try {
     const client = await pool.connect();
@@ -31,7 +31,7 @@ async function getAllNotes() {
   }
 }
 
-// Get a user by ID
+// Get a note by ID
 async function getNoteById(id) {
   try {
     const client = await pool.connect();
@@ -50,6 +50,9 @@ async function getNoteById(id) {
     return null;
   }
 }
+
+//export functions
+module.exports = {getAllNotes, getNoteById}
 
 /*async function createNoteTable() {
     let sql = `CREATE TABLE IF NOT EXISTS Note(
