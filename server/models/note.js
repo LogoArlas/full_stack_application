@@ -31,7 +31,7 @@ async function getAllNotes() {
   }
 }
 
-// Get a note by Id
+// Get a note by id
 async function getNoteById(id) {
   try {
     const client = await pool.connect();
