@@ -75,20 +75,3 @@ async function getAllNotes() {
 }
 
 module.exports = {getAllNotes}*/
-
-/*// Create a new Note
-async function createNoteTable(text) {
-  try {
-    const client = await pool.connect();
-    const result = await client.query(
-      'INSERT INTO Note (text) VALUES ($1) RETURNING *',
-      [username]
-    );
-    console.log('Note created:', result.rows[0]);
-    client.release();
-    return result.rows[0];
-  } catch (err) {
-    console.error('Error creating note:', err);
-    return null;
-  }
-}*/
