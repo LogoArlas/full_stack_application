@@ -52,7 +52,7 @@ async function getAllNotes() {
 }*/
 
 //export functions
-module.exports = {getAllNotes, getNoteById}
+module.exports = {getAllNotes}
 
 /*async function createNoteTable() {
     let sql = `CREATE TABLE IF NOT EXISTS Note(

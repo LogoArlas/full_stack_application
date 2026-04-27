@@ -32,6 +32,8 @@ async function getAllUsers() {
   }
 }
 
+module.exports = {getAllUsers}
+
 // Get a user by ID
 /*async function getUserById(id) {
   try {
@@ -53,7 +55,7 @@ async function getAllUsers() {
 }*/
 
 //export functions
-module.exports = {getAllUsers, getUserById}
+//module.exports = {getAllUsers, getUserById}
 
 // Example usage:
 //getAllUsers();
