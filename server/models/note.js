@@ -6,7 +6,7 @@ async function createNoteTable(text) {
     const client = await pool.connect();
     const result = await client.query(
       'INSERT INTO Note (text) VALUES ($1) RETURNING *',
-      [username]
+      [text]
     );
     console.log('Note created:', result.rows[0]);
     client.release();
