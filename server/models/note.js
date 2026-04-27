@@ -31,6 +31,8 @@ async function getAllNotes() {
   }
 }
 
+module.exports = {getAllNotes}
+
 // Get a note by id
 /*async function getNoteById(id) {
   try {
@@ -52,7 +54,7 @@ async function getAllNotes() {
 }*/
 
 //export functions
-module.exports = {getAllNotes}
+//module.exports = {getAllNotes}
 
 /*async function createNoteTable() {
     let sql = `CREATE TABLE IF NOT EXISTS Note(
