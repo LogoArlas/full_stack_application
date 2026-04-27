@@ -2,7 +2,7 @@
 const pool = require("./db_connect")
 
 // Create a new user
-async function createUserTable(username, password) {
+async function createUser(username, password) {
   try {
     const client = await pool.connect();
     const result = await client.query(

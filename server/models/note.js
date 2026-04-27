@@ -1,7 +1,7 @@
 const pool = require("./db_connect")
 
 // Create a new Note
-async function createNoteTable(text) {
+async function createNote(text) {
   try {
     const client = await pool.connect();
     const result = await client.query(
