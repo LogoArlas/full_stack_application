@@ -8,16 +8,6 @@ const app = express();
 
 app.use(express.json())
 
-//execute query for GET request
-/*app.get('/', async (req, res) => {
-  try {
-    const result = await db.query('SELECT * FROM User');
-    res.json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Internal Server Error');
-  }
-});*/
 
 //set the port the server will run on
 const PG_PORT = process.env.PG_PORT || PORT_NUMBER
@@ -28,7 +18,6 @@ app.listen(PG_PORT, ()=> {
 
 });
 
-// index.js
 const pool = require("./server/models/db_connect");
 
 async function main() {
@@ -76,3 +65,14 @@ app.use("/notes", noteRoutes)
 //const PG_PORT = process.env.PG_PORT || PORT_NUMBER
 //start server and listen for incoming requests
 //app.listen(PG_PORT, ()=> console.log(`Server started on port ${PG_PORT}!!`))
+
+//execute query for GET request
+/*app.get('/', async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM User');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});*/
