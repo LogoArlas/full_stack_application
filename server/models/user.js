@@ -33,7 +33,7 @@ async function getAllUsers() {
 }
 
 // Get a user by ID
-async function getUserById(id) {
+/*async function getUserById(id) {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM User WHERE id = $1', [id]);
@@ -50,7 +50,7 @@ async function getUserById(id) {
     console.error('Error getting user:', err);
     return null;
   }
-}
+}*/
 
 //export functions
 module.exports = {getAllUsers, getUserById}

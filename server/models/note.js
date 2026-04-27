@@ -32,7 +32,7 @@ async function getAllNotes() {
 }
 
 // Get a note by id
-async function getNoteById(id) {
+/*async function getNoteById(id) {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM Note WHERE id = $1', [id]);
@@ -49,7 +49,7 @@ async function getNoteById(id) {
     console.error('Error getting Note:', err);
     return null;
   }
-}
+}*/
 
 //export functions
 module.exports = {getAllNotes, getNoteById}
