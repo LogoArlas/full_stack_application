@@ -1,6 +1,6 @@
 const pool = require("./db_connect")
 
-/*// Create a new Note
+// Create a new Note
 async function createNoteTable(text) {
   try {
     const client = await pool.connect();
@@ -15,31 +15,7 @@ async function createNoteTable(text) {
     console.error('Error creating note:', err);
     return null;
   }
-}*/
-
-//create table for Note entity
-async function createNoteTable() {
-  try {
-    const client = await pool.connect();
-    let sql = await client.query(
-    `CREATE TABLE IF NOT EXISTS Note(
-    noteId SERIAL PRIMARY KEY,
-    text VARCHAR(255),
-    CONSTRAINT userFK FOREIGN KEY(userId)
-    REFERENCES User(userId)
-    )`
-  );
-  console.log('Note created:', sql.rows[0]);
-    client.release();
-    return sql.rows[0];
-  } catch (err) {
-    console.error('Error creating note:', err);
-    return null;
-  }
-    await pool.query(sql)
 }
-
-createNoteTable()
 
 // Get all notes
 async function getAllNotes() {
