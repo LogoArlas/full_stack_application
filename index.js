@@ -8,6 +8,34 @@ const app = express();
 
 app.use(express.json())
 
+const userRoutes = require("./server/routes/user")
+
+// CORS middleware
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");  
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");  
+  next();
+});
+
+//define a route path for routes related to the User entity
+//const userRoutes = require("./server/routes/user")
+app.use("/user", userRoutes)
+
+//define a route path for routes related to the Note entity
+const noteRoutes = require("./server/routes/note")
+app.use("/note", noteRoutes)
+
+//execute query for GET request
+app.get('/', async (req, res) => {
+  try {
+    const result = await db.query('SELECT * FROM User');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 //set the port the server will run on
 const PG_PORT = process.env.PG_PORT || PORT_NUMBER
@@ -18,7 +46,7 @@ app.listen(PG_PORT, ()=> {
 
 });
 
-const pool = require("./server/models/db_connect");
+/*const pool = require("./server/models/db_connect");
 
 async function main() {
   try {
@@ -34,37 +62,7 @@ async function main() {
   }
 }
 
-main();
-
-//define a route path for routes related to the User entity
-const userRoutes = require("./server/routes/user")
-app.use("/users", userRoutes)
-
-//define a route path for routes related to the Note entity
-const noteRoutes = require("./server/routes/note")
-app.use("/notes", noteRoutes)
-
-
-//import Express
-//const express = require("express")
-//create instance of an Express application
-//const app = express()
-
-//define a route path for routes related to the User entity
-//const userRoutes = require("./server/routes/user")
-//app.use("/users", userRoutes)
-
-//app.use(express.json())
-
-//define a route path for routes related to the Note entity
-//const noteRoutes = require("./server/routes/note")
-//app.use("/notes", noteRoutes)
-
-//app.use(express.json())
-//set the port the server will run on
-//const PG_PORT = process.env.PG_PORT || PORT_NUMBER
-//start server and listen for incoming requests
-//app.listen(PG_PORT, ()=> console.log(`Server started on port ${PG_PORT}!!`))
+main(); */
 
 //execute query for GET request
 /*app.get('/', async (req, res) => {
