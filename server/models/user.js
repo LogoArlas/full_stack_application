@@ -1,8 +1,32 @@
 //import pool to access database
 const pool = require("./db_connect")
+//bcrypt
+const bcrypt = require("bcrypt")
+
+async function createUserTable() {
+  try {
+    const client = await pool.connect();
+    let sql = await client.query(
+     `
+      CREATE TABLE IF NOT EXISTS User (
+        userId SERIAL PRIMARY KEY,
+        username VARCHAR(250) UNIQUE NOT NULL,
+        password VARCHAR(250) NOT NULL
+      );`
+    );
+      console.log('User table created:');
+      client.release();
+     } catch (err) {
+      console.error('Error creating User table:', err);
+      return null;
+     }
+
+}
+
+createUserTable()
 
 // Create a new user
-async function createUser(username, password) {
+/*async function createUser(username, password) {
   try {
     const client = await pool.connect();
     const result = await client.query(
@@ -16,7 +40,9 @@ async function createUser(username, password) {
     console.error('Error creating user:', err);
     return null;
   }
-}
+}*/
+
+//createUser("hello", 1234)
 
 // Get all users
 async function getAllUsers() {
@@ -32,6 +58,7 @@ async function getAllUsers() {
   }
 }
 
+getAllUsers()
 module.exports = {getAllUsers}
 
 // Get a user by ID
@@ -56,10 +83,6 @@ module.exports = {getAllUsers}
 
 //export functions
 //module.exports = {getAllUsers, getUserById}
-
-// Example usage:
-//getAllUsers();
-//getUserById(1);
 
 /*//create function to create table 
 async function createUserTable() {
