@@ -19,8 +19,6 @@ async function createUserTable() {
     return null; 
   }
       
-     
-
 }
 
 createUserTable()
@@ -42,7 +40,7 @@ async function createUser(username, password) {
   }
 }
 
-//createUser("hello", 1234)
+createUser('{"hello"}', '{"1234"}')
 
 //get user by username
 
