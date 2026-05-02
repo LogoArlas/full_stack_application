@@ -7,9 +7,9 @@ async function createNoteTable() {
      
       CREATE TABLE IF NOT EXISTS Note(
           noteId SERIAL PRIMARY KEY,
-          userId INT,
+          userId INT NOT NULL,
           text VARCHAR(255),
-          CONSTRAINT userId FOREIGN KEY(userId)
+          CONSTRAINT userFK FOREIGN KEY(userId)
           REFERENCES "User"(userId)
       );`
     );
