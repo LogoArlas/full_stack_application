@@ -120,6 +120,25 @@ async function getAllUsers() {
 
 getAllUsers()
 
+//Update User
+//Update username
+async function updateUsername(id, updatedUsername) {
+  try{
+    const client = await pool.connect()
+    const result = await client.query(`UPDATE "User" SET updatedUsername = $1
+      WHERE id = $2 RETURNING *`, [updatedUsername, id])
+      if (result.rows.length > 0) {
+        console.log('Username updated:', result.rows[0])
+        client.release()
+        return result.rows[0]
+      }
+   } catch (err) {
+    console.log('Error updating username.')
+    client.release()
+    return null
+  }
+}
+
 //export function
 module.exports = {getAllUsers, login, register}
 
