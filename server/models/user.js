@@ -40,9 +40,31 @@ async function createUser(username, password) {
   }
 }
 
-createUser('{"hello"}', '{"1234"}')
+//createUser('{"hello"}', '{"1234"}')
 
 //get user by username
+async function getUserByUsername(username) {
+  try{
+    const client = await pool.connect()
+    const cUser = await client.query(`SELECT * FROM "User" 
+    WHERE username=$1`, [username])
+      if (cUser.rows.length > 0) {
+      console.log('Got user by username:', cUser.rows);
+      client.release();
+      return cUser.rows;
+      } else {
+      console.log('User not found');
+      client.release();
+      return null;
+      }
+  } catch (err) {
+    console.error('Error getting user by username:', err);
+    return null;
+  }
+ 
+}
+
+getUserByUsername('{"hello"}')
 
 //login
 
