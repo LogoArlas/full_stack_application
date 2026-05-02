@@ -23,8 +23,46 @@ async function createUserTable() {
 
 createUserTable()
 
-// Create/register a new user
-async function createUser(username, password) {
+//register
+async function register(user) {
+  let cUser = await getUserByUsername(user.username)
+  if(cUser) throw Error("Username already in use!")
+    try{
+      const client = await pool.connect();
+      let hashedPassword = await bcrypt.hash(user.password, 10)
+      let sql = await client.query(`
+      INSERT INTO "User"(username, password) 
+      VALUES($1, $2)`[user.username, hashedPassword])
+      return await login(user)
+      console.log('User registration complete.')
+    } catch (err) {
+      console.error('Error registering user:', err);
+      return null;
+    }
+  }
+
+//register(user)
+
+//login
+  async function login(user) {
+    try{
+  let cUser = await getUserByUsername(user)
+  if(!cUser) throw Error("Username not found!")
+  
+  let match = await bcrypt.compare(user.password, cUser.password)
+  if(!match) throw Error("Password Incorrect!")
+  client.release()
+  return cUser
+  } catch (err) {
+  console.error('Error logging in user:', err);
+  return null;
+      }
+}
+
+login('{"hello"}')
+
+// Create a new user
+/*async function createUser(username, password) {
   try {
     const client = await pool.connect();
     const result = await client.query(
@@ -38,7 +76,7 @@ async function createUser(username, password) {
     console.error('Error creating user:', err);
     return null;
   }
-}
+}*/
 
 //createUser('{"hello"}', '{"1234"}')
 
@@ -49,9 +87,9 @@ async function getUserByUsername(username) {
     const cUser = await client.query(`SELECT * FROM "User" 
     WHERE username=$1`, [username])
       if (cUser.rows.length > 0) {
-      console.log('Got user by username:', cUser.rows);
+      console.log('Got user by username:', cUser.rows[0]);
       client.release();
-      return cUser.rows;
+      return cUser.rows[0];
       } else {
       console.log('User not found');
       client.release();
@@ -65,8 +103,6 @@ async function getUserByUsername(username) {
 }
 
 getUserByUsername('{"hello"}')
-
-//login
 
 // Get all users
 async function getAllUsers() {
@@ -83,7 +119,9 @@ async function getAllUsers() {
 }
 
 getAllUsers()
-module.exports = {getAllUsers}
+
+//export function
+module.exports = {getAllUsers, login, register}
 
 // Get a user by ID
 /*async function getUserById(id) {
@@ -106,4 +144,4 @@ module.exports = {getAllUsers}
 }*/
 
 //export getAllUsers() function
-module.exports = {getAllUsers}
+//module.exports = {getAllUsers}
