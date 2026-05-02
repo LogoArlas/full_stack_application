@@ -3,13 +3,14 @@ const pool = require("./db_connect")
 async function createNoteTable() {
   try {
     const client = await pool.connect();
-    let sql = await client.query(
-     `
+    let sql = await client.query(`
+     
       CREATE TABLE IF NOT EXISTS Note(
-      noteId SERIAL PRIMARY KEY,
-      text VARCHAR(255),
-      CONSTRAINT userFK FOREIGN KEY(userId)
-      REFERENCES User(userId)
+          noteId SERIAL PRIMARY KEY,
+          userId INT,
+          text VARCHAR(255),
+          CONSTRAINT userId FOREIGN KEY(userId)
+          REFERENCES "User"(userId)
       );`
     );
       console.log('Note table created:');

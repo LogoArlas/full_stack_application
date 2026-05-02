@@ -4,33 +4,33 @@ const pool = require("./db_connect")
 const bcrypt = require("bcrypt")
 
 async function createUserTable() {
-  try {
+  try{
     const client = await pool.connect();
     let sql = await client.query(
-     `
-      CREATE TABLE IF NOT EXISTS User (
-        userId SERIAL PRIMARY KEY,
-        username VARCHAR(250) UNIQUE NOT NULL,
-        password VARCHAR(250) NOT NULL
+      `
+      CREATE TABLE IF NOT EXISTS "User" (
+          userId SERIAL PRIMARY KEY,
+          username VARCHAR(250) UNIQUE NOT NULL,
+          password VARCHAR(250) NOT NULL
       );`
-    );
-      console.log('User table created:');
-      client.release();
-     } catch (err) {
-      console.error('Error creating User table:', err);
-      return null;
-     }
+    )
+  }catch (err) {
+    console.error('Error creating user table:', err);
+    return null; 
+  }
+      
+     
 
 }
 
 createUserTable()
 
-// Create a new user
-/*async function createUser(username, password) {
+// Create/register a new user
+async function createUser(username, password) {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'INSERT INTO User (username, password) VALUES ($1, $2) RETURNING *',
+      'INSERT INTO "User" (username, password) VALUES ($1, $2) RETURNING *',
       [username, password]
     );
     console.log('User created:', result.rows[0]);
@@ -40,15 +40,19 @@ createUserTable()
     console.error('Error creating user:', err);
     return null;
   }
-}*/
+}
 
 //createUser("hello", 1234)
+
+//get user by username
+
+//login
 
 // Get all users
 async function getAllUsers() {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM User');
+    const result = await client.query('SELECT * FROM "User"');
     console.log('All users:', result.rows);
     client.release();
     return result.rows;

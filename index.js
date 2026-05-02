@@ -29,7 +29,7 @@ app.use("/note", noteRoutes)
 //execute query for GET request
 app.get('/', async (req, res) => {
   try {
-    const result = await db.query('SELECT * FROM User');
+    const result = await db.query('SELECT * FROM "User"');
     res.json(result.rows);
   } catch (err) {
     console.error(err);
