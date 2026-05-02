@@ -131,6 +131,10 @@ async function updateUsername(id, updatedUsername) {
         console.log('Username updated:', result.rows[0])
         client.release()
         return result.rows[0]
+      } else {
+        console.log('Username not found.')
+        client.release()
+        return null
       }
    } catch (err) {
     console.log('Error updating username.')
