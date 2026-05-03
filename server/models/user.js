@@ -148,7 +148,7 @@ async function updateUsername(id, updatedUsername) {
 async function deleteUser(id) {
   try {
     const client = await pool.connect();
-    const result = await client.query('DELETE FROM "User" WHERE userId = $1', [id]);
+    const result = await client.query(`DELETE FROM "User" WHERE userId = $1`, [id]);
     if (result.rows.length > 0) {
       console.log('User deleted:', result.rows[0]);
       client.release();
