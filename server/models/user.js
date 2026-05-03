@@ -14,7 +14,7 @@ async function createUserTable() {
           password VARCHAR(250) NOT NULL
       );`
     )
-  }catch (err) {
+  } catch (err) {
     console.error('Error creating user table:', err);
     return null; 
   }
@@ -125,7 +125,7 @@ async function updateUsername(id, updatedUsername) {
   try{
     const client = await pool.connect()
     const result = await client.query(`UPDATE "User" SET updatedUsername = $1
-      WHERE id = $2 RETURNING *`, [updatedUsername, id])
+      WHERE userId = $2 RETURNING *`, [id, updatedUsername,])
       if (result.rows.length > 0) {
         console.log('Username updated:', result.rows[0])
         client.release()
@@ -147,21 +147,20 @@ async function updateUsername(id, updatedUsername) {
 //delete user
 async function deleteUser(id) {
   try {
-    const client = await pool.connect()
-    const result = await client.query(`DELETE FROM "User" WHERE id = $1
-      RETURNING *`, [id])
-      if (result.rows.length > 0) {
-        console.log('User deleted:', result.rows[0])
-        client.release()
-        return result.rows[0]
-      } else {
-        console.log('User not found.')
-        client.release()
-        return null
-      }
-   } catch (err) {
-    console.log('Error deleting user.')
-    return null
+    const client = await pool.connect();
+    const result = await client.query('DELETE FROM "User" WHERE userId = $1', [id]);
+    if (result.rows.length > 0) {
+      console.log('User deleted:', result.rows[0]);
+      client.release();
+      return result.rows[0];
+    } else {
+      console.log('User not found');
+      client.release();
+      return null;
+    }
+  } catch (err) {
+    console.error('Error deleting user:', err);
+    return null;
   }
 }
 
@@ -170,8 +169,8 @@ deleteUser(5)
 //export function
 module.exports = {getAllUsers, login, register}
 
-// Get a user by ID
-/*async function getUserById(id) {
+// Get a user by Id
+async function getUserById(id) {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM User WHERE id = $1', [id]);
@@ -188,7 +187,6 @@ module.exports = {getAllUsers, login, register}
     console.error('Error getting user:', err);
     return null;
   }
-}*/
+}
 
-//export getAllUsers() function
 //module.exports = {getAllUsers}

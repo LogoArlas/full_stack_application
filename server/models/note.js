@@ -3,7 +3,7 @@ const pool = require("./db_connect")
 async function createNoteTable() {
   try {
     const client = await pool.connect();
-    let sql = await client.query(`
+    let sql = await client.query (`
      
       CREATE TABLE IF NOT EXISTS Note(
           noteId SERIAL PRIMARY KEY,
