@@ -59,7 +59,7 @@ async function register(user) {
       }
 }
 
-login('{"hello"}')
+//login('{"hello"}')
 
 // Create a new user
 /*async function createUser(username, password) {
@@ -137,7 +137,6 @@ async function updateUsername(id, updatedUsername) {
       }
    } catch (err) {
     console.log('Error updating username.')
-    client.release()
     return null
   }
 }
@@ -162,7 +161,6 @@ async function deleteUser(id) {
       }
    } catch (err) {
     console.log('Error deleting user.')
-    client.release()
     return null
   }
 }
