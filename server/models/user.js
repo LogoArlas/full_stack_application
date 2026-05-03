@@ -120,7 +120,6 @@ async function getAllUsers() {
 
 getAllUsers()
 
-//Update User
 //Update username
 async function updateUsername(id, updatedUsername) {
   try{
@@ -142,6 +141,33 @@ async function updateUsername(id, updatedUsername) {
     return null
   }
 }
+
+//update username
+//updateUsername(4, 'bye')
+
+//delete user
+async function deleteUser(id) {
+  try {
+    const client = await pool.connect()
+    const result = await client.query(`DELETE FROM "User" WHERE id = $1
+      RETURNING *`, [id])
+      if (result.rows.length > 0) {
+        console.log('User deleted:', result.rows[0])
+        client.release()
+        return result.rows[0]
+      } else {
+        console.log('User not found.')
+        client.release()
+        return null
+      }
+   } catch (err) {
+    console.log('Error deleting user.')
+    client.release()
+    return null
+  }
+}
+
+deleteUser(5)
 
 //export function
 module.exports = {getAllUsers, login, register}
