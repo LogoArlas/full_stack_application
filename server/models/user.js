@@ -59,8 +59,6 @@ async function register(user) {
       }
 }
 
-//login('{"hello"}')
-
 // Create a new user
 /*async function createUser(username, password) {
   try {
@@ -120,7 +118,7 @@ async function getAllUsers() {
 
 getAllUsers()
 
-//Update username
+//update username
 async function updateUsername(id, updatedUsername) {
   try{
     const client = await pool.connect()
@@ -164,13 +162,13 @@ async function deleteUser(id) {
   }
 }
 
-deleteUser(5)
+//deleteUser(5)
 
 //export function
 module.exports = {getAllUsers, login, register}
 
 // Get a user by Id
-async function getUserById(id) {
+/*async function getUserById(id) {
   try {
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM User WHERE id = $1', [id]);
@@ -187,6 +185,4 @@ async function getUserById(id) {
     console.error('Error getting user:', err);
     return null;
   }
-}
-
-//module.exports = {getAllUsers}
+}*/
