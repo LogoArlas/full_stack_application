@@ -82,7 +82,7 @@ async function updateNote(id, text) {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'UPDATE Note SET text = $1 WHERE id = $2 RETURNING *',
+      'UPDATE Note SET text = $1 WHERE noteId = $2 RETURNING *',
       [text, id]
     );
     if (result.rows.length > 0) {
@@ -100,6 +100,28 @@ async function updateNote(id, text) {
   }
 }
 
-updateNote( );
+updateNote( )
+
+// Delete a note
+async function deleteNote(id) {
+  try {
+    const client = await pool.connect();
+    const result = await client.query('DELETE FROM Note WHERE noteId = $1 RETURNING *', [id]);
+    if (result.rows.length > 0) {
+      console.log('Note deleted:', result.rows[0]);
+      client.release();
+      return result.rows[0];
+    } else {
+      console.log('Note not found');
+      client.release();
+      return null;
+    }
+  } catch (err) {
+    console.error('Error deleting note:', err);
+    return null;
+  }
+}
+
+deleteUser()
 
 module.exports = {getAllNotes}
