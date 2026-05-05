@@ -77,4 +77,29 @@ async function getNoteById(id) {
   }
 }
 
+// Update a note
+async function updateNote(id, text) {
+  try {
+    const client = await pool.connect();
+    const result = await client.query(
+      'UPDATE Note SET text = $1 WHERE id = $2 RETURNING *',
+      [text, id]
+    );
+    if (result.rows.length > 0) {
+      console.log('Note updated:', result.rows[0]);
+      client.release();
+      return result.rows[0];
+    } else {
+      console.log('Note not found');
+      client.release();
+      return null;
+    }
+  } catch (err) {
+    console.error('Error updating note:', err);
+    return null;
+  }
+}
+
+updateNote( );
+
 module.exports = {getAllNotes}
