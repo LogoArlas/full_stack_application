@@ -1,4 +1,5 @@
 import {User} from "./user.js"
+import {fetchData} from "./main.js"
 let registrationForm = document.getElementById("registration_form")
 if(registrationForm) registrationForm.addEventListener('submit', register)
 
