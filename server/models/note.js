@@ -122,6 +122,6 @@ async function deleteNote(id) {
   }
 }
 
-deleteUser()
+deleteNote()
 
 module.exports = {getAllNotes}
