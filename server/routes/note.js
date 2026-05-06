@@ -20,7 +20,7 @@ router.post("/createNote", (req, res) => {
     }
 })
 
-router.post("/updateNote", (req, res) => {
+router.put("/updateNote", (req, res) => {
     try{
         const update = Note.updateNote(req.body)
         res.send(update)
