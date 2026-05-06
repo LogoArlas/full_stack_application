@@ -30,5 +30,14 @@ router.post("/register", (req, res) => {
     }
 })
 
+router.delete("/deleteUser", (req, res) => {
+    try{
+        res.send('Got a DELETE request at /deleteUser')
+    } catch (err) {
+        res.status(401).send({message: error.message})
+    }
+})
+
+
 //export the router to access the routes from index.js
 module.exports = router

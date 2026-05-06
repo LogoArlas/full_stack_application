@@ -165,7 +165,7 @@ async function deleteUser(id) {
 //deleteUser(5)
 
 //export function
-module.exports = {getAllUsers, login, register}
+module.exports = {getAllUsers, login, register, deleteUser}
 
 // Get a user by Id
 /*async function getUserById(id) {

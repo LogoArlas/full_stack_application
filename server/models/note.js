@@ -124,4 +124,4 @@ async function deleteNote(id) {
 
 deleteNote()
 
-module.exports = {getAllNotes}
+module.exports = {getAllNotes, createNote, updateNote, deleteNote}
