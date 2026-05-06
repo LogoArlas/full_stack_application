@@ -31,7 +31,8 @@ router.post("/updateNote", (req, res) => {
 
 router.delete("/deleteNote", (req, res) => {
     try{
-        res.send('Got a DELETE request at /deleteNote')
+        const note = Note.deleteNote(req.body)
+        res.send(note,'Got a DELETE request at /deleteNote')
     } catch (err) {
         res.status(401).send({message: error.message})
     }

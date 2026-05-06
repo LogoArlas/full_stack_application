@@ -32,7 +32,8 @@ router.post("/register", (req, res) => {
 
 router.delete("/deleteUser", (req, res) => {
     try{
-        res.send('Got a DELETE request at /deleteUser')
+        const users = User.deleteUser(req.body)
+        res.send(users, 'Got a DELETE request at /deleteUser')
     } catch (err) {
         res.status(401).send({message: error.message})
     }
