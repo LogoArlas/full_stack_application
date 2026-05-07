@@ -1,9 +1,9 @@
-require('dotenv').config();
+
 
 // fetchData function: use for POST, PUT, and DELETE. 
 // Fetch method implementation:
 async function fetchData(route = '', data = {}, methodType) {
-  const response = await fetch(`http://localhost:${process.env.PG_PORT}/${route}`, {
+  const response = await fetch(`http://localhost:3500${route}`, {
     method: methodType, // *POST, PUT, DELETE, etc.
     headers: {
       'Content-Type': 'application/json'
