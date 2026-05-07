@@ -1,5 +1,3 @@
-
-
 // fetchData function: use for POST, PUT, and DELETE. 
 // Fetch method implementation:
 async function fetchData(route = '', data = {}, methodType) {
