@@ -23,22 +23,40 @@ async function createUserTable() {
 
 createUserTable()
 
+async function checkTables() {
+  try{
+    const client = await pool.connect()
+    const cUser = await client.query(`SELECT * FROM "User"` );
+    console.log(cUser)
+    client.release()
+  } catch (err) {
+    console.error('Error getting user by username:', err);
+    return null;
+  }
+}
+
+// checkTables()
+
 //register
 async function register(user) {
   let cUser = await getUserByUsername(user.username)
   if(cUser) throw Error("Username already in use!")
+  const client = await pool.connect();
+
     try{
-      const client = await pool.connect();
       let hashedPassword = await bcrypt.hash(user.password, 10)
       let sql = await client.query(`
       INSERT INTO "User"(username, password) 
-      VALUES($1, $2)`[user.username, hashedPassword])
+      VALUES($1, $2)`,[user.username, hashedPassword])
       return await login(user)
       console.log('User registration complete.')
-    } catch (err) {
+    }catch (err) {
       console.error('Error registering user:', err);
       return null;
-    }
+    } finally {
+      client.release();
+    } 
+    
   }
 
 
@@ -46,12 +64,12 @@ async function register(user) {
 //login
   async function login(user) {
     try{
-  let cUser = await getUserByUsername(user)
+  let cUser = await getUserByUsername(user.username)
   if(!cUser) throw Error("Username not found!")
   
   let match = await bcrypt.compare(user.password, cUser.password)
   if(!match) throw Error("Password Incorrect!")
-  client.release()
+    console.log("cuser: " + cUser)
   return cUser
   } catch (err) {
   console.error('Error logging in user:', err);
@@ -123,8 +141,8 @@ async function getAllUsers() {
 async function updateUsername(id, updatedUsername) {
   try{
     const client = await pool.connect()
-    const result = await client.query(`UPDATE "User" SET updatedUsername = $1
-      WHERE userId = $2 RETURNING *`, [id, updatedUsername,])
+    const result = await client.query(`UPDATE "User" SET username = $1
+      WHERE userId = $2 RETURNING *`, [updatedUsername, id])
       if (result.rows.length > 0) {
         console.log('Username updated:', result.rows[0])
         client.release()
@@ -147,7 +165,7 @@ async function updateUsername(id, updatedUsername) {
 async function deleteUser(id) {
   try {
     const client = await pool.connect();
-    const result = await client.query(`DELETE FROM "User" WHERE userId = $1`, [id]);
+    const result = await client.query(`DELETE FROM "User" WHERE userId = $1 RETURNING *`, [id]);
     if (result.rows.length > 0) {
       console.log('User deleted:', result.rows[0]);
       client.release();
