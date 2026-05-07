@@ -41,7 +41,7 @@ async function register(user) {
     }
   }
 
-//register(user)
+
 
 //login
   async function login(user) {
@@ -81,6 +81,7 @@ async function register(user) {
 //get user by username
 async function getUserByUsername(username) {
   try{
+    console.log(username)
     const client = await pool.connect()
     const cUser = await client.query(`SELECT * FROM "User" 
     WHERE username=$1`, [username])
@@ -100,7 +101,7 @@ async function getUserByUsername(username) {
  
 }
 
-getUserByUsername('{"hello"}')
+// getUserByUsername('{"hello"}')
 
 // Get all users
 async function getAllUsers() {
@@ -116,7 +117,7 @@ async function getAllUsers() {
   }
 }
 
-getAllUsers()
+// getAllUsers()
 
 //update username
 async function updateUsername(id, updatedUsername) {

@@ -10,7 +10,7 @@ async function createNoteTable() {
           userId INT NOT NULL,
           text VARCHAR(255),
           CONSTRAINT userFK FOREIGN KEY(userId)
-          REFERENCES "User"(userId)
+          REFERENCES "User"("userId")
       );`
     );
       console.log('Note table created:');
@@ -55,7 +55,7 @@ async function getAllNotes() {
   }
 }
 
-getAllNotes()
+// getAllNotes()
 
 // Get a note by id
 async function getNoteById(id) {
@@ -100,7 +100,7 @@ async function updateNote(id, text) {
   }
 }
 
-updateNote( )
+// updateNote()
 
 // Delete a note
 async function deleteNote(id) {
@@ -122,6 +122,6 @@ async function deleteNote(id) {
   }
 }
 
-deleteNote()
+// deleteNote()
 
 module.exports = {getAllNotes, createNote, updateNote, deleteNote}
