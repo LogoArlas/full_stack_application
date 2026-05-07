@@ -7,10 +7,29 @@ function register(e) {
     e.preventDefault()
     let uName = document.getElementById("uname").value
     let passwd = document.getElementById("passwd").value
+    if(checkPassword(password)) {
 
     //Use the constructor to declare a new object.
     //This creates a new user.
     const user = new User(uName, passwd)
     console.log(user)
 
+    // make fetch call to login route in server's user.js route file
+        fetchData('/user/register', user, 'POST')
+        .then(data => {
+          if(!data.message) {
+            window.location = "../register.html"
+          }
+        })
+        .catch(err => {
+          let error = document.getElementById("error")
+          error.innerText=err.message
+          document.getElementById("passwd").value=""
+        })
+    } else {
+        console.log("Invaild Password.")
+    }
 }
+
+function checkPassword() {}
+

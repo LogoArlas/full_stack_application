@@ -24,7 +24,7 @@ function login(e) {
         fetchData('/user/login', user, 'POST')
         .then(data => {
           if(!data.message) {
-            window.location = "note.html"
+            window.location = "../login.html"
           }
         })
         .catch(err => {
