@@ -10,7 +10,7 @@ async function createNoteTable() {
           userId INT NOT NULL,
           text VARCHAR(255),
           CONSTRAINT userFK FOREIGN KEY(userId)
-          REFERENCES "User"("userId")
+          REFERENCES "User"(userId)
       );`
     );
       console.log('Note table created:');
@@ -25,19 +25,20 @@ async function createNoteTable() {
 createNoteTable()
 
 // Create a new Note
-async function createNote(text) {
+async function createNote(userId, text) {
+  const client = await pool.connect();
   try {
-    const client = await pool.connect();
     const result = await client.query(
-      'INSERT INTO Note (text) VALUES ($1) RETURNING *',
-      [text]
+      'INSERT INTO note (userId, text) VALUES ($1, $2) RETURNING *',
+      [userId,text]
     );
     console.log('Note created:', result.rows[0]);
-    client.release();
     return result.rows[0];
   } catch (err) {
     console.error('Error creating note:', err);
     return null;
+  } finally {
+    client.release();
   }
 }
 
@@ -45,7 +46,7 @@ async function createNote(text) {
 async function getAllNotes() {
   try {
     const client = await pool.connect();
-    const result = await client.query('SELECT * FROM Note');
+    const result = await client.query('SELECT * FROM note');
     console.log('All notes:', result.rows);
     client.release();
     return result.rows;
@@ -59,9 +60,9 @@ async function getAllNotes() {
 
 // Get a note by id
 async function getNoteById(id) {
+  const client = await pool.connect();
   try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM Note WHERE id = $1', [id]);
+    const result = await client.query('SELECT * FROM note WHERE noteId = $1', [id]);
     if (result.rows.length > 0) {
       console.log('Note found:', result.rows[0]);
       client.release();
@@ -82,7 +83,7 @@ async function updateNote(id, text) {
   try {
     const client = await pool.connect();
     const result = await client.query(
-      'UPDATE Note SET text = $1 WHERE noteId = $2 RETURNING *',
+      'UPDATE note SET text = $1 WHERE noteId = $2 RETURNING *',
       [text, id]
     );
     if (result.rows.length > 0) {
@@ -106,7 +107,7 @@ async function updateNote(id, text) {
 async function deleteNote(id) {
   try {
     const client = await pool.connect();
-    const result = await client.query('DELETE FROM Note WHERE noteId = $1 RETURNING *', [id]);
+    const result = await client.query('DELETE FROM note WHERE noteId = $1 RETURNING *', [id]);
     if (result.rows.length > 0) {
       console.log('Note deleted:', result.rows[0]);
       client.release();
