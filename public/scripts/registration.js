@@ -18,7 +18,7 @@ function register(e) {
         fetchData('/user/register', user, 'POST')
         .then(data => {
           if(!data.message) {
-            window.location = "../register.html"
+            window.location = "../note.html"
           }
         })
         .catch(err => {
