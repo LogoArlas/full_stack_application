@@ -23,8 +23,9 @@ function login(e) {
         // make fetch call to login route in server's user.js route file
         fetchData('/user/login', user, 'POST')
         .then(data => {
+          console.log(data)
           if(!data.message) {
-            window.location = "../note.html"
+            window.location = "./note.html"
           }
         })
         .catch(err => {
