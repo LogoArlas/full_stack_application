@@ -11,27 +11,29 @@ router.get("/getAllNotes", async (req, res) => {
     }
 })
 
-router.post("/createNote", (req, res) => {
+router.post("/createNote", async (req, res) => {
     try{
-        const note = Note.createNote(req.body)
+        const user = req.body
+        console.log(user)
+        const note = await Note.createNote(user.userId, user.text)
         res.send(note)
     } catch (err) {
-        res.status(401).send({message: error.message})
+        res.status(401).send({message: err.message})
     }
 })
 
-router.put("/updateNote", (req, res) => {
+router.put("/updateNote", async (req, res) => {
     try{
-        const update = Note.updateNote(req.body)
+        const update = await Note.updateNote(req.body)
         res.send(update)
     } catch (err) {
         res.status(401).send({message: error.message})
     }
 })
 
-router.delete("/deleteNote", (req, res) => {
+router.delete("/deleteNote", async (req, res) => {
     try{
-        const note = Note.deleteNote(req.body)
+        const note = await Note.deleteNote(req.body)
         res.send(note,'Got a DELETE request at /deleteNote')
     } catch (err) {
         res.status(401).send({message: error.message})

@@ -5,7 +5,6 @@ const router = express.Router()
 
 router.get("/getAllUsers", (req, res) => {
     try{
-        console.log("hi")
         const users = User.getAllUsers()
         res.send(users)
     } catch (err) {
@@ -13,27 +12,29 @@ router.get("/getAllUsers", (req, res) => {
     }
 })
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     try{
-        const users = User.login(req.body)
+        const users = await User.login(req.body)
+        console.log(users)
         res.send({...users, password: undefined})
     } catch (err) {
         res.status(401).send({message: error.message})
     }
 })
 
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
     try{
-        const users = User.register(req.body)
+        const users = await User.register(req.body)
+        console.log(users)
         res.send({...users, password: undefined})
     } catch (err) {
         res.status(401).send({message: error.message})
     }
 })
 
-router.delete("/deleteUser", (req, res) => {
+router.delete("/deleteUser", async (req, res) => {
     try{
-        const users = User.deleteUser(req.body)
+        const users = await User.deleteUser(req.body)
         res.send(users, 'Got a DELETE request at /deleteUser')
     } catch (err) {
         res.status(401).send({message: error.message})
