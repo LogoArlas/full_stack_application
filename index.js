@@ -73,11 +73,11 @@ app.delete("/user/:id", async (req, res) => {
 
 
 //set the port the server will run on
-const PG_PORT = 3500// process.env.PG_PORT || PORT_NUMBER
+const PORT = process.env.PORT || PORT_NUMBER
 
 //start server and listen for incoming requests
-app.listen(PG_PORT, ()=> {
- console.log(`Server started on port ${PG_PORT}!!`)
+app.listen(PORT, ()=> {
+ console.log(`Server started on port ${PORT}!!`)
 
 })
 
