@@ -1,4 +1,4 @@
-import {User} from "./user.js"
+import {User} from "./userObject.js"
 import {fetchData} from "./main.js"
 let registrationForm = document.getElementById("registration_form")
 if(registrationForm) registrationForm.addEventListener('submit', register)
@@ -7,7 +7,7 @@ function register(e) {
     e.preventDefault()
     let uName = document.getElementById("uname").value
     let passwd = document.getElementById("passwd").value
-    if(checkPassword(password)) {
+    if(checkPassword(passwd)) {
 
     //Use the constructor to declare a new object.
     //This creates a new user.
@@ -18,7 +18,7 @@ function register(e) {
         fetchData('/user/register', user, 'POST')
         .then(data => {
           if(!data.message) {
-            window.location = "../note.html"
+            window.location = "./note.html"
           }
         })
         .catch(err => {
@@ -31,5 +31,7 @@ function register(e) {
     }
 }
 
-function checkPassword() {}
+function checkPassword() {
+    return true;
+}
 
