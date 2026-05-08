@@ -18,6 +18,7 @@ function register(e) {
         fetchData('/user/register', user, 'POST')
         .then(data => {
           if(!data.message) {
+            //console.log(`New user created id=${userId}`)
             window.location = "./login.html"
           }
         })
@@ -34,4 +35,6 @@ function register(e) {
 function checkPassword() {
     return true;
 }
+
+//export {user}
 
