@@ -7,10 +7,10 @@ if (cUser) {
   nav.innerHTML = `
       <ul>
       <li><a href="note.html">Hello, ${cUser.username}</a><li>
-      <li><a id="logout">Logout</a><li>
+      <li><a id="logout" href="login.html">Logout</a><li>
       </ul>
       <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
-} else {
+} else if (nav) {
   nav.innerHTML = `
       <ul>
       <li>New user?</li>
