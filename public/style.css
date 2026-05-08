@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
 header {
     font-family: "Comic Sans MS", cursive, "Lucida Console", Monaco, monospace;
     font-size: smaller;
@@ -108,5 +112,16 @@ a {
 }
 
 #logout {
-    color:blueviolet;
+    color: #660099;
+}
+
+.registration_bar li {
+    list-style: none;
+}
+
+.registrtion_bar {
+    display: flex;
+    align-content: center;
+    display: block;
+    padding: 13.3333em;
 }
