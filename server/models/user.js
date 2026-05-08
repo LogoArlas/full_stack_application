@@ -94,8 +94,6 @@ async function register(user) {
   }
 }*/
 
-//createUser('{"hello"}', '{"1234"}')
-
 //get user by username
 async function getUserByUsername(username) {
   try{
@@ -119,7 +117,6 @@ async function getUserByUsername(username) {
  
 }
 
-// getUserByUsername('{"hello"}')
 
 // Get all users
 async function getAllUsers() {
@@ -158,8 +155,6 @@ async function updateUsername(id, updatedUsername) {
   }
 }
 
-//update username
-//updateUsername(4, 'bye')
 
 //delete user
 async function deleteUser(id) {
@@ -181,9 +176,8 @@ async function deleteUser(id) {
   }
 }
 
-//deleteUser(5)
 
-//export function
+
 module.exports = {getAllUsers, login, register, deleteUser}
 
 // Get a user by Id
