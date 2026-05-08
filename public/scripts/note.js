@@ -1,5 +1,14 @@
 import {Note} from "./noteObject.js"
 import {fetchData} from "./main.js"
+import {getCurrentUser} from "./login.js"
+//import {user} from "./register.js"
+
+let currentUser = getCurrentUser()
+if(!currentUser) window.location = "login.html"
+
+//let userFK = user.userId
+//console.log(userFK)
+
 let noteForm = document.getElementById("note_form")
 
 if(noteForm) noteForm.addEventListener("submit", note)
@@ -10,15 +19,12 @@ function note(e) {
     const note = new Note(noteContent)
     console.log(note)
 
-    // make fetch call to login route in server's note.js route file
+    // make fetch call to createNote route in server's note.js route file
     fetchData('/note/createNote', note, 'POST')
     .then(data => {
        console.log(data)
        if(!data.message) {
-        
-            //let noteText = document.getElementById("noteText")
-            noteText.innerTexT=data.message
-            //document.getElementById("noteText").value=""
+        let display = document.getElementById("displayContent").innerText=+ data
         }
     })
         .catch(err => {
