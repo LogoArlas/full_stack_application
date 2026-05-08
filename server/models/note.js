@@ -5,7 +5,7 @@ async function createNoteTable() {
     const client = await pool.connect();
     let sql = await client.query (`
      
-      CREATE TABLE IF NOT EXISTS Note(
+      CREATE TABLE IF NOT EXISTS note(
           noteId SERIAL PRIMARY KEY,
           userId INT NOT NULL,
           text VARCHAR(255),
@@ -73,7 +73,7 @@ async function getNoteById(id) {
       return null;
     }
   } catch (err) {
-    console.error('Error getting Note:', err);
+    console.error('Error getting note:', err);
     return null;
   }
 }
