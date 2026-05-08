@@ -10,7 +10,7 @@ if (cUser) {
       <li><a id="logout" href="login.html">Logout</a><li>
       </ul>
       <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
-} else if (nav) {
+} else if (!cUser && nav) {
   nav.innerHTML = `
       <ul>
       <li>New user?</li>
