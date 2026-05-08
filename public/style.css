@@ -115,7 +115,7 @@ a {
     color: #660099;
 }
 
-.registration_bar li {
+.registration_bar li, .login_header li {
     list-style: none;
 }
 
@@ -124,4 +124,10 @@ a {
     align-content: center;
     display: block;
     padding: 13.3333em;
+}
+
+.login_header {
+    display: flex;
+    align-content: center;
+    display: block;
 }
