@@ -16,6 +16,7 @@ router.post("/createNote", async (req, res) => {
         const user = req.body
         console.log(user)
         const note = await Note.createNote(user.userId, user.text)
+        console.log(note)
         res.send(note)
     } catch (err) {
         res.status(401).send({message: err.message})
