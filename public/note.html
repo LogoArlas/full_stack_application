@@ -9,19 +9,14 @@
     <body>
         <header>
             <nav>
-                <div class="logout_link">
-                    <ul>
-                        <li><a href="login.html">Logout</a></li>
-                    </ul>
-                <img src="./images/todo_list_image.jpg" alt="To-Do list picture">
-            </div>
-
             </nav>
         </header>
             <main>
         
                 <div class="note_container">
                     <form id="note_form">
+                        <p id="error"></p>
+                        <p id="noteText"></p>
                         <label for="note">Note</label>
                         <input type="text" id="note" name="note">
                         <div class="add_text_button">
@@ -33,5 +28,6 @@
             </main>
         <footer>Note App</footer>
         <script type="module" src="./scripts/note.js"></script>
+        <script type="module" src="./scripts/main.js"></script>
     </body>
 </html>

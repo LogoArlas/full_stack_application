@@ -25,6 +25,7 @@ function login(e) {
         .then(data => {
           console.log(data)
           if(!data.message) {
+            setCurrentUser(data)
             window.location = "./note.html"
           }
         })
@@ -40,4 +41,17 @@ function login(e) {
 
 function checkPassword(password) {
     return true
+}
+
+async function setCurrentUser(user) {
+  await localStorage.setItem('User', JSON.stringify(user))
+}
+
+export async function getCurrentUser() {
+  return await JSON.parse(localStorage.getItem('User'))
+}
+
+export async function removeCurrentUser() {
+  localStorage.removeItem('User')
+  window.location = "login.html"
 }

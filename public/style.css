@@ -102,3 +102,11 @@ a {
 .logout_link {
     display:inline-block;
 }
+
+#error {
+    color:rgb(149, 12, 12);
+}
+
+#logout {
+    color:blueviolet;
+}

@@ -1,3 +1,29 @@
+import {removeCurrentUser, getCurrentUser} from "./login.js"
+
+let cUser = await getCurrentUser()
+let nav = document.querySelector('nav')
+
+if (cUser) {
+  nav.innerHTML = `
+      <ul>
+      <li><a href="note.html">Note Page</a><li>
+      <li><a id="logout">Logout</a><li>
+      </ul>
+      <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
+} else {
+  nav.innerHTML = `
+      <ul>
+      <li>New user?</li>
+      <li><a href="register.html">Register</a></li>
+      <li><a href="login.html">Login</a><li>
+      </ul>
+      <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
+}
+
+//event listener for logout
+let logout = document.getElementById("logout")
+if(logout) logout.addEventListener('click', removeCurrentUser)
+
 // fetchData function: use for POST, PUT, and DELETE. 
 // Fetch method implementation:
 async function fetchData(route = '', data = {}, methodType) {
