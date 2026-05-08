@@ -1,6 +1,7 @@
 import {removeCurrentUser, getCurrentUser} from "./login.js"
 
 let cUser = await getCurrentUser()
+
 let nav = document.querySelector('nav')
 
 if (cUser) {
@@ -10,14 +11,7 @@ if (cUser) {
       <li><a id="logout" href="login.html">Logout</a><li>
       </ul>
       <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
-} else if (!cUser && nav) {
-  nav.innerHTML = `
-      <ul>
-      <li>New user?</li>
-      <li><a href="register.html">Register</a></li>
-      </ul>
-      <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
-}
+} 
 
 //event listener for logout
 let logout = document.getElementById("logout")
