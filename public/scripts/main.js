@@ -6,7 +6,7 @@ let nav = document.querySelector('nav')
 if (cUser) {
   nav.innerHTML = `
       <ul>
-      <li><a href="note.html">Note Page</a><li>
+      <li><a href="note.html">Hello, ${cUser.username}</a><li>
       <li><a id="logout">Logout</a><li>
       </ul>
       <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
