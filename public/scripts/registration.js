@@ -19,7 +19,7 @@ function register(e) {
         .then(data => {
           if(!data.message) {
             //console.log(`New user created id=${userId}`)
-            window.location = "./login.html"
+            window.location = "./note.html"
           }
         })
         .catch(err => {
@@ -30,11 +30,9 @@ function register(e) {
     } else {
         console.log("Invaild Password.")
     }
+    
 }
 
 function checkPassword() {
     return true;
 }
-
-//export {user}
-
