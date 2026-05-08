@@ -15,7 +15,6 @@ if (cUser) {
       <ul>
       <li>New user?</li>
       <li><a href="register.html">Register</a></li>
-      <li><a href="login.html">Login</a><li>
       </ul>
       <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
 }

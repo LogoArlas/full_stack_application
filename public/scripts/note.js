@@ -15,9 +15,10 @@ function note(e) {
     .then(data => {
        console.log(data)
        if(!data.message) {
-            let noteText = document.getElementById("noteText")
+        
+            //let noteText = document.getElementById("noteText")
             noteText.innerTexT=data.message
-            
+            //document.getElementById("noteText").value=""
         }
     })
         .catch(err => {
