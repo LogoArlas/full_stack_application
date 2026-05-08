@@ -14,7 +14,7 @@ function register(e) {
     const user = new User(uName, passwd)
     console.log(user)
 
-    // make fetch call to login route in server's user.js route file
+    // make fetch call to register route in server's user.js route file
         fetchData('/user/register', user, 'POST')
         .then(data => {
           if(!data.message) {
