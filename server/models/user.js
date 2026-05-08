@@ -59,8 +59,6 @@ async function register(user) {
     
   }
 
-
-
 //login
   async function login(user) {
     try{
@@ -117,7 +115,6 @@ async function getUserByUsername(username) {
  
 }
 
-
 // Get all users
 async function getAllUsers() {
   try {
@@ -133,6 +130,26 @@ async function getAllUsers() {
 }
 
 // getAllUsers()
+
+// Get a user by Id
+async function getUserById(id) {
+  const client = await pool.connect();
+  try {
+    const result = await client.query('SELECT * FROM User WHERE userId = $1', [id]);
+    if (result.rows.length > 0) {
+      console.log('User found:', result.rows[0]);
+      client.release();
+      return result.rows[0];
+    } else {
+      console.log('User not found');
+      client.release();
+      return null;
+    }
+  } catch (err) {
+    console.error('Error getting user:', err);
+    return null;
+  }
+}
 
 //update username
 async function updateUsername(id, updatedUsername) {
