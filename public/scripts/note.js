@@ -1,7 +1,7 @@
 import {Note} from "./noteObject.js"
 import {fetchData} from "./main.js"
 import {getCurrentUser} from "./login.js"
-//import {user} from "./register.js"
+//import {user} from "./registration.js"
 
 let currentUser = getCurrentUser()
 if(!currentUser) window.location = "login.html"
