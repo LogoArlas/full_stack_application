@@ -12,14 +12,14 @@ router.get("/getAllUsers", (req, res) => {
     }
 })
 
-router.post("/getUserId", async (req, res) => {
+/*router.post("/getUserId", async (req, res) => {
     try{
         const userId = await User.getUserId()
         res.send(userId)
     } catch (err) {
         res.status(401).send({message: error.message})
     }
-})
+})*/
 
 router.post("/login", async (req, res) => {
     try{
