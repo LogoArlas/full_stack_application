@@ -1,7 +1,7 @@
 require('dotenv').config();
 //import Express
 const express = require('express');
-// const db = require("./server/models/db_connect");
+
 const path = require("path")
 
 //create instance of an Express application
@@ -80,6 +80,3 @@ app.listen(PORT, ()=> {
  console.log(`Server started on port ${PORT}!!`)
 
 })
-
-
-/*const pool = require("./server/models/db_connect");*/
