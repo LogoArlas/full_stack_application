@@ -6,10 +6,52 @@ let currentUser = await getCurrentUser()
 if(!currentUser) window.location = "login.html"
 
 let userFK = currentUser.userid
+//let jUserFK = JSON.stringify(userFK)
+let jUserFK = userFK
 
 console.log(currentUser)
 console.log(userFK)
+console.log(jUserFK)
 
+//print all instances of note
+document.addEventListener('DOMContentLoaded', function(e) {
+displayAllNotes(e)
+e.preventDefault()
+})
+function displayAllNotes(e) {
+  e.preventDefault()
+
+  fetchData('/note/getNoteByUserId', jUserFK, 'POST')
+  .then(response => response.json())
+    .then(data => {
+       console.log(data)
+        .then(data => {
+        displayNotes(data);
+        }
+    )})
+        .catch(err => {
+          let error = document.getElementById("error")
+          error.innerText=err.message
+          document.getElementById("displayIdNotes").value=""
+        })
+
+}
+
+function displayNotes(data) {
+    const dataContainer = document.getElementById("displayIdNotes");
+    
+    // Clear existing data
+    dataContainer.innerHTML = '';
+
+    // Iterate over the data and create HTML elements to display it
+    data.forEach(item => {
+        const dataItem = document.createElement('div');
+        dataItem.classList.add('data-item');
+        dataItem.textContent = `Id: ${item.noteId}, Name: ${item.userId}, Content : ${item.text}`;
+        dataContainer.appendChild(dataItem);
+    });
+}
+         
 let noteForm = document.getElementById("note_form")
 
 if(noteForm) noteForm.addEventListener("submit", note)
