@@ -58,11 +58,11 @@ async function getAllNotes() {
 
 // getAllNotes()
 
-// Get a note by id
-async function getNoteById(id) {
+// Get a note by userId
+async function getNoteByUserId(id) {
   const client = await pool.connect();
   try {
-    const result = await client.query('SELECT * FROM note WHERE noteId = $1', [id]);
+    const result = await client.query('SELECT * FROM note WHERE userId = $1', [id]);
     if (result.rows.length > 0) {
       console.log('Note found:', result.rows[0]);
       client.release();
