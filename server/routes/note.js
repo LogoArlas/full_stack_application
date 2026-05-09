@@ -15,7 +15,7 @@ router.post("/createNote", async (req, res) => {
     try{
         const user = req.body
         console.log(user)
-        const note = await Note.createNote(user.userId, user.text)
+        const note = await Note.createNote(user.userId, user.noteContent)
         console.log(note)
         res.send(note)
     } catch (err) {

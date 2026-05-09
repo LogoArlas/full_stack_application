@@ -134,15 +134,15 @@ async function getUserById(id) {
   }
 }
 
-//
+
 // Get userId
-async function getUserId(username) {
+/*async function getUserId(user) {
   let cUser = await getUserByUsername(user.username)
   if(!cUser) throw Error("Username not found!")
   const client = await pool.connect();  
       try{
     const result = await client.query(`SELECT userId FROM "User" 
-      WHERE username = $1`);
+      WHERE username = $1`, [user.username]);
     if (result.rows.length > 0) {
       console.log('UserId found:', result.rows[0]);
       client.release();
@@ -156,7 +156,7 @@ async function getUserId(username) {
     console.error('Error getting userId:', err);
     return null;
   }
-}
+}*/
 
 //update username
 async function updateUsername(id, updatedUsername) {
@@ -202,4 +202,4 @@ async function deleteUser(id) {
 
 
 
-module.exports = {getAllUsers, login, register, deleteUser, getUserId}
+module.exports = {getAllUsers, login, register, deleteUser}
