@@ -15,7 +15,7 @@ router.post("/createNote", async (req, res) => {
     try{
         const user = req.body
         console.log(user)
-        const note = await Note.createNote(user.userId, user.noteContent)
+        const note = await Note.createNote(user.userId, user.noteContent) //Change user.text to user.noteContent. Now text column is not undefined in note table
         console.log(note)
         res.send(note)
     } catch (err) {
