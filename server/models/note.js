@@ -125,4 +125,4 @@ async function deleteNote(id) {
 
 // deleteNote()
 
-module.exports = {getAllNotes, createNote, updateNote, deleteNote}
+module.exports = {getAllNotes, createNote, updateNote, deleteNote, getNoteByUserId}
