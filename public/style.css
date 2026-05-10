@@ -131,3 +131,7 @@ a {
     align-content: center;
     display: block;
 }
+
+.data-item {
+  margin-bottom: 10px;
+}
