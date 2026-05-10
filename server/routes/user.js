@@ -1,4 +1,3 @@
-//create route to call getAllUsers() function
 const express = require("express")
 const User = require("../models/user")
 const router = express.Router()
