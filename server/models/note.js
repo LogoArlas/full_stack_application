@@ -70,7 +70,7 @@ async function getNoteByUserId(id) {
     } else {
       console.log('Note not found');
       client.release();
-      return null;
+      return [];
     }
   } catch (err) {
     console.error('Error getting note:', err);
