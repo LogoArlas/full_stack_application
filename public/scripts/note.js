@@ -11,24 +11,29 @@ let jUserFK = userFK
 
 console.log(currentUser)
 console.log(userFK)
-console.log(jUserFK)
+console.log(typeof jUserFK)
+
+const keyId = {
+  userId: jUserFK
+}
+
+console.log(typeof keyId)
 
 //print all instances of note
 document.addEventListener('DOMContentLoaded', function(e) {
 displayAllNotes(e)
 e.preventDefault()
 })
+
 function displayAllNotes(e) {
   e.preventDefault()
 
-  fetchData('/note/getNoteByUserId', jUserFK, 'POST')
-  .then(response => response.json())
-    .then(data => {
+  fetchData('/note/getNoteByUserId', keyId, 'POST')
+   .then(data => {
+    console.log(data)
+     displayNotes(data)
        console.log(data)
-        .then(data => {
-        displayNotes(data);
-        }
-    )})
+})
         .catch(err => {
           let error = document.getElementById("error")
           error.innerText=err.message
@@ -43,13 +48,12 @@ function displayNotes(data) {
     // Clear existing data
     dataContainer.innerHTML = '';
 
-    // Iterate over the data and create HTML elements to display it
     data.forEach(item => {
-        const dataItem = document.createElement('div');
+      const dataItem = document.createElement('div');
         dataItem.classList.add('data-item');
-        dataItem.textContent = `Id: ${item.noteId}, Name: ${item.userId}, Content : ${item.text}`;
+        dataItem.textContent = `NoteId: ${item.noteid}, UserId: ${item.userid}, Content : ${item.text}`;
         dataContainer.appendChild(dataItem);
-    });
+    })
 }
          
 let noteForm = document.getElementById("note_form")
@@ -70,6 +74,7 @@ function note(e) {
         let display = document.getElementById("displayContent")
         display.innerText=data.text
         document.getElementById("note").value=""
+        displayAllNotes(e)
         }
     })
         .catch(err => {
