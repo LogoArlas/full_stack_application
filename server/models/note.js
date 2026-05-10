@@ -64,9 +64,9 @@ async function getNoteByUserId(id) {
   try {
     const result = await client.query('SELECT * FROM note WHERE userId = $1', [id]);
     if (result.rows.length > 0) {
-      console.log('Note found:', result.rows[0]);
+      console.log('Notes found:', result.rows);
       client.release();
-      return result.rows[0];
+      return result.rows;
     } else {
       console.log('Note not found');
       client.release();
