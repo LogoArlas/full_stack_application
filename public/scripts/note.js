@@ -28,17 +28,17 @@ function displayAllNotes(e) {
   e.preventDefault()
 
   fetchData('/note/getNoteByUserId', keyId, 'POST')
-   .then(data => {
+   .then(data => {     
     console.log(data)
       displayNotes(data)
-      console.log(data) 
+      console.log(data)
 })
         .catch(err => {
           let error = document.getElementById("error")
           error.innerText=err.message
           document.getElementById("displayIdNotes").value=""
         })
-
+         
 }
 
 function displayNotes(data) {
