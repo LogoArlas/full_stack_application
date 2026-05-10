@@ -13,9 +13,9 @@ router.get("/getAllNotes", async (req, res) => {
 
 router.post("/getNoteByUserId", async (req, res) => {
     try{
-        const jUserFK = req.body
-        console.log(jUserFK)
-        const note = await Note.getNoteByUserId(jUserFK)
+        const keyId = req.body
+        console.log(keyId)
+        const note = await Note.getNoteByUserId(keyId.userId)
         console.log(note)
         res.send(note)
     } catch (err) {
