@@ -7,18 +7,18 @@ function register(e) {
     e.preventDefault()
     let uName = document.getElementById("uname").value
     let passwd = document.getElementById("passwd").value
-    if(checkPassword(passwd)) {
+    if(passwd) {
 
     //Use the constructor to declare a new object.
     //This creates a new user.
     const user = new User(uName, passwd)
+
     console.log(user)
 
     // make fetch call to register route in server's user.js route file
         fetchData('/user/register', user, 'POST')
         .then(data => {
           if(!data.message) {
-            //console.log(`New user created id=${userId}`)
             window.location = "./note.html"
           }
         })
