@@ -31,7 +31,6 @@ function displayAllNotes(e) {
    .then(data => {     
     console.log(data)
       displayNotes(data)
-      console.log(data)
 })
         .catch(err => {
           let error = document.getElementById("error")
