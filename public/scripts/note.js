@@ -6,7 +6,6 @@ let currentUser = await getCurrentUser()
 if(!currentUser) window.location = "login.html"
 
 let userFK = currentUser.userid
-//let jUserFK = JSON.stringify(userFK)
 let jUserFK = userFK
 
 console.log(currentUser)
@@ -31,8 +30,8 @@ function displayAllNotes(e) {
   fetchData('/note/getNoteByUserId', keyId, 'POST')
    .then(data => {
     console.log(data)
-     displayNotes(data)
-       console.log(data)
+      displayNotes(data)
+      console.log(data) 
 })
         .catch(err => {
           let error = document.getElementById("error")
