@@ -14,6 +14,8 @@ async function createUserTable() {
           password VARCHAR(250) NOT NULL
       );`
     )
+    console.log('User table created:');
+      client.release();
   } catch (err) {
     console.error('Error creating user table:', err);
     return null; 
@@ -43,6 +45,7 @@ async function register(user) {
   if(cUser) throw Error("Username already in use!")
   const client = await pool.connect();
     try{
+      
       /*
       const salt = await bcrypt.genSalt(10);
       // now we set user password to hashed password
@@ -51,6 +54,7 @@ async function register(user) {
       let sql = await client.query(`
       INSERT INTO "User"(username, password) 
       VALUES($1, $2)`,[user.username, hashedPassword])
+      console.log('User registration complete.')
       return await login(user)
       console.log('User registration complete.')
     }catch (err) {
@@ -70,8 +74,9 @@ async function register(user) {
   
   let match = await bcrypt.compare(user.password, cUser.password)
   if(!match) throw Error("Password Incorrect!")
+
     console.log("cuser: " + cUser)
-  return cUser
+    return cUser
   } catch (err) {
   console.error('Error logging in user:', err);
   return null;
