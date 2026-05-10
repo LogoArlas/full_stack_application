@@ -42,8 +42,11 @@ async function register(user) {
   let cUser = await getUserByUsername(user.username)
   if(cUser) throw Error("Username already in use!")
   const client = await pool.connect();
-
     try{
+      /*
+      const salt = await bcrypt.genSalt(10);
+      // now we set user password to hashed password
+      const hashedPassword = await bcrypt.hash(user.password, salt);*/
       let hashedPassword = await bcrypt.hash(user.password, 10)
       let sql = await client.query(`
       INSERT INTO "User"(username, password) 
@@ -98,6 +101,7 @@ async function getUserByUsername(username) {
  
 }
 
+//check username
 // Get all users
 async function getAllUsers() {
   try {
