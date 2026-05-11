@@ -1,17 +1,17 @@
 import {removeCurrentUser, getCurrentUser} from "./login.js"
 
-//let cUser = await getCurrentUser()
+let cUser = await getCurrentUser()
 
-//let nav = document.querySelector('nav')
+let nav = document.querySelector('nav')
 
-/*if (cUser) {
+if (cUser) {
   nav.innerHTML = `
       <ul>
-      <li><a href="note.html">Hello, ${cUser.username}</a><li>
+      <li><a href="note.html">Hello, user</a><li>
       <li><a id="logout" href="login.html">Logout</a><li>
       </ul>
       <img src="./images/todo_list_image.jpg" alt="To-Do list picture">`
-} */
+}
 
 //event listener for logout
 let logout = document.getElementById("logout")
